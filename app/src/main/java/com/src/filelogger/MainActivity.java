@@ -10,19 +10,20 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "[FileLogger]" + MainActivity.class.getSimpleName();
 
-    private Logger mLogger = LoggerFactory.getLogger(MainActivity.class);
+//    private Logger mLogger = LoggerFactory.getLogger(MainActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
-        mLogger.debug("onCreate");
+//        mLogger.debug("onCreate");
+        Timber.d("onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "On FloatingActionButton click");
-                mLogger.debug("On FloatingActionButton click");
+//                mLogger.debug("On FloatingActionButton click");
+                Timber.d("On FloatingActionButton click");
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -57,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Log.d(TAG, "Select option item : setting");
-            mLogger.debug("Select option item : setting");
+//            mLogger.debug("Select option item : setting");
+            Timber.d("Select option item : setting");
             return true;
         }
 

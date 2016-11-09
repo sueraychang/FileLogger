@@ -39,4 +39,6 @@ dependencies {
         // workaround issue #73
         exclude group: 'com.google.android', module: 'android'
     }
+
+    compile 'com.jakewharton.timber:timber:4.3.1'
 }
