@@ -1,23 +1,16 @@
 <configuration>
-    <property name="LOG_DIR" value="/storage/emulated/0/Download/" />
+    <property name="LOG_DIR" value="/storage/emulated/0/Download/logs/" />
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <!-- lazy initialization: don't create the file until 1st write -->
+        <lazy>true</lazy>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- active log file -->
-        <file>${LOG_DIR}/filelogger_log.txt</file>
+        <file>${LOG_DIR}/ps.log</file>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread %-5level %msg%n</pattern>
         </encoder>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover period -->
-            <fileNamePattern>${LOG_DIR}/filelogger_log.%d.txt</fileNamePattern>
-
-            <!-- keep 7 days' worth of history -->
-            <maxHistory>7</maxHistory>
-        </rollingPolicy>
     </appender>
 
-    <root level="TRACE">
+    <root level="DEBUG">
         <appender-ref ref="FILE" />
     </root>
 </configuration>
